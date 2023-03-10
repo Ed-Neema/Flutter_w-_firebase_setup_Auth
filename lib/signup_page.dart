@@ -1,3 +1,4 @@
+import 'package:firebase_auth_dbestech/auth_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,10 @@ class SignUpPage extends StatelessWidget {
     double screen_width = MediaQuery.of(context).size.width;
     double screen_height = MediaQuery.of(context).size.height;
     List images = ["g.png", 't.png', 'f.png'];
+
+    // Email and password
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -29,7 +34,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   CircleAvatar(
                     backgroundColor: Colors.white70,
-                    radius: 60,
+                    radius: 30,
                     backgroundImage: AssetImage("assets/img/profile1.png"),
                   )
                 ],
@@ -42,7 +47,7 @@ class SignUpPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 50, //to create some space
+                    height: 30, //to create some space
                   ),
                   // textbox1
                   Container(
@@ -57,23 +62,24 @@ class SignUpPage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.2))
                         ]),
                     child: TextField(
+                        controller: emailController,
                         decoration: InputDecoration(
-                      hintText: "Enter your email",
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.deepOrangeAccent,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                    )),
+                          hintText: "Enter your email",
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Colors.deepOrangeAccent,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                        )),
                   ),
                   SizedBox(
                     height: 20,
@@ -91,27 +97,27 @@ class SignUpPage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.2))
                         ]),
                     child: TextField(
+                        controller: passwordController,
+                        obscureText: true,
                         decoration: InputDecoration(
-                      hintText: "Enter Password",
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.deepOrangeAccent,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                    )),
+                          hintText: "Enter Password",
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.deepOrangeAccent,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30)),
+                        )),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+
                   // Row(
                   //   children: [
                   //     Expanded(child: Container()),
@@ -127,21 +133,27 @@ class SignUpPage extends StatelessWidget {
             SizedBox(
               height: 70,
             ),
-            Container(
-              width: screen_width * 0.5,
-              height: screen_width * 0.15,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  image: DecorationImage(
-                      image: AssetImage('assets/img/loginbtn.png'),
-                      fit: BoxFit.cover)),
-              child: Center(
-                child: Text(
-                  "Sign up",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+            GestureDetector(
+              onTap: (() {
+                AuthController.instance.register(emailController.text.trim(),
+                    passwordController.text.trim());
+              }),
+              child: Container(
+                width: screen_width * 0.5,
+                height: screen_width * 0.15,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    image: DecorationImage(
+                        image: AssetImage('assets/img/loginbtn.png'),
+                        fit: BoxFit.cover)),
+                child: Center(
+                  child: Text(
+                    "Sign up",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
                 ),
               ),
             ),

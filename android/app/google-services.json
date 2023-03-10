@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "729617119735",
+    "project_id": "flutterfirst-app",
+    "storage_bucket": "flutterfirst-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729617119735:android:2ccc2a082fdc8a269616f2",
+        "android_client_info": {
+          "package_name": "com.example.firebase_auth_dbestech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729617119735-qvklirqstupv4sej16h7be2f8knr8ni6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8Q8HgJfY_rGOCXhQEYi98CbRX3qygUXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729617119735-qvklirqstupv4sej16h7be2f8knr8ni6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
